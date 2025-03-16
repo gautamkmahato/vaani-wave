@@ -49,9 +49,13 @@ const ttsPlatforms = [
 
 export default function ComparisonTable() {
   return (
-    <div className="text-white flex flex-col rounded-lg shadow-lg items-center p-6 mb-24 mt-12" style={{ backgroundColor: '#090932' }}>
-      <h1 className="text-4xl font-serif mb-6">Compare Vaaniwave AI with Top TTS Platforms</h1>
-      <div className="overflow-x-auto w-full max-w-6xl">
+    <div className="text-white flex flex-col rounded-lg shadow-lg items-center p-6 mb-24 mt-12 w-full" style={{ backgroundColor: '#090932' }}>
+      <h1 className="text-3xl md:text-4xl font-serif text-center mb-6">
+        Compare Vaaniwave AI with Top TTS Platforms
+      </h1>
+
+      {/* Desktop Table View */}
+      <div className="hidden md:block w-full max-w-6xl overflow-x-auto">
         <table className="w-full border border-gray-700 text-left">
           <thead>
             <tr style={{ backgroundColor: '#232249' }}>
@@ -81,6 +85,24 @@ export default function ComparisonTable() {
             ))}
           </tbody>
         </table>
+      </div>
+
+      {/* Mobile Card View */}
+      <div className="md:hidden flex flex-col gap-6 w-full max-w-6xl">
+        {ttsPlatforms.map((platform, index) => (
+          <div key={index} className="bg-[#17162d] p-5 rounded-lg shadow-md border border-gray-700">
+            <div className="flex items-center gap-3 mb-3">
+              <Image src={platform.logo} alt={platform.name} className="w-10 h-10 rounded-full" />
+              <h2 className="text-xl font-semibold">{platform.name}</h2>
+            </div>
+            <p><strong>Voices:</strong> {platform.voices}</p>
+            <p><strong>Minutes:</strong> {platform.minutes}</p>
+            <p><strong>Pricing:</strong> {platform.pricing}</p>
+            <p><strong>Speed:</strong> {platform.speed}</p>
+            <p><strong>Languages:</strong> {platform.languages}</p>
+            <p><strong>Pros:</strong> {platform.pros.join(", ")}</p>
+          </div>
+        ))}
       </div>
     </div>
   );

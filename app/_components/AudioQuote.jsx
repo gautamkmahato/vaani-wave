@@ -57,7 +57,7 @@ export default function AudioQuote() {
         {/* Left Button */}
         <button
           onClick={prevAvatar}
-          className="p-2 rounded-full hover:bg-gray-800 transition"
+          className=" rounded-full hover:bg-gray-800 transition"
         >
           <ChevronLeft className="text-white" />
         </button>
