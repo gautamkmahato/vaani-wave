@@ -18,7 +18,7 @@ export default function Home() {
       <Header />
       <Hero />
       <div className="mt-[-40px] bg-gradient-to-b from-[#24244b] to-[#090932] overflow-hidden">
-        <div className="flex items-center justify-center p-6">
+        <div className="flex items-center justify-center">
           <div className="w-full max-w-6xl p-6 rounded-2xl mx-auto">
             {/* Responsive Grid */}
             <div className="grid grid-cols-1 md:grid-cols-10 gap-4">

@@ -33,7 +33,7 @@ const mockAvatars = [
 ];
 
 export default function AudioQuote() {
-  const [index, setIndex] = useState(2); // Center index
+  const [index, setIndex] = useState(2);
   const [isPlaying, setIsPlaying] = useState(false);
 
   const prevAvatar = () => {
@@ -54,12 +54,12 @@ export default function AudioQuote() {
     <div className="w-full max-w-md bg-cardBgPrimary rounded-xl p-7 shadow-lg space-y-6">
       {/* Avatar Slider */}
       <div className="flex items-center justify-center space-x-4">
-        {/* Left Button */}
+        {/* Left Button - Moved Slightly Inside */}
         <button
           onClick={prevAvatar}
-          className=" rounded-full hover:bg-gray-800 transition"
+          className="rounded-full hover:bg-gray-800 transition ml-6 md:ml-0"
         >
-          <ChevronLeft className="text-white" />
+          <ChevronLeft className="text-white w-6 h-6" />
         </button>
 
         {/* Avatar Images - Showing 5 at a time */}
@@ -73,7 +73,7 @@ export default function AudioQuote() {
               : Math.abs(offset) === 1
               ? "w-16 h-16"
               : "w-10 h-10";
-            const opacityClass = isCenter ? "opacity-100" : "opacity-50"; // Dim other images
+            const opacityClass = isCenter ? "opacity-100" : "opacity-50";
 
             return (
               <div
@@ -104,12 +104,12 @@ export default function AudioQuote() {
           })}
         </div>
 
-        {/* Right Button */}
+        {/* Right Button - Moved Slightly Inside */}
         <button
           onClick={nextAvatar}
-          className="p-2 rounded-full hover:bg-gray-800 transition"
+          className="p-2 rounded-full hover:bg-gray-800 transition mr-6 md:mr-0"
         >
-          <ChevronRight className="text-white" />
+          <ChevronRight className="text-white w-6 h-6" />
         </button>
       </div>
 
@@ -124,39 +124,38 @@ export default function AudioQuote() {
       </div>
 
       {/* Audio Player Placeholder */}
-<div className="relative flex justify-center items-center h-24">
-  <div className="flex space-x-1" style={{ transform: "scaleY(-1)" }}>
-    {[...Array(40)].map((_, i) => (
-      <div
-        key={i}
-        className={`w-1 h-16 bg-gray-600 rounded-full transform origin-bottom ${
-          isPlaying ? "animate-wave-animation" : ""
-        }`}
-        style={{ animationDelay: `${i * 0.1}s` }}
-      ></div>
-    ))}
-  </div>
-</div>
+      <div className="relative flex justify-center items-center h-24">
+        <div className="flex space-x-1" style={{ transform: "scaleY(-1)" }}>
+          {[...Array(40)].map((_, i) => (
+            <div
+              key={i}
+              className={`w-1 h-16 bg-gray-600 rounded-full transform origin-bottom ${
+                isPlaying ? "animate-wave-animation" : ""
+              }`}
+              style={{ animationDelay: `${i * 0.1}s` }}
+            ></div>
+          ))}
+        </div>
+      </div>
 
-{/* Waveform Animation */}
-<style jsx>{`
-  @keyframes wave-animation {
-    0% {
-      height: 16px;
-    }
-    50% {
-      height: 48px;
-    }
-    100% {
-      height: 16px;
-    }
-  }
+      {/* Waveform Animation */}
+      <style jsx>{`
+        @keyframes wave-animation {
+          0% {
+            height: 16px;
+          }
+          50% {
+            height: 48px;
+          }
+          100% {
+            height: 16px;
+          }
+        }
 
-  .animate-wave-animation {
-    animation: wave-animation 1s infinite ease-in-out alternate;
-  }
-`}</style>
-
+        .animate-wave-animation {
+          animation: wave-animation 1s infinite ease-in-out alternate;
+        }
+      `}</style>
     </div>
   );
 }
