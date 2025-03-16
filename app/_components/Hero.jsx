@@ -1,13 +1,65 @@
 'use client'
 
-
 // HeroSection.jsx
 import React, { useEffect, useRef } from 'react';
 
 export default function Hero() {
   const canvasRef = useRef(null);
   const contentRef = useRef(null);
+  const bgCanvasRef = useRef(null);
   
+  // Background dotted lines effect
+  useEffect(() => {
+    const bgCanvas = bgCanvasRef.current;
+    if (bgCanvas) {
+      const bgCtx = bgCanvas.getContext('2d');
+      
+      const updateBgSize = () => {
+        bgCanvas.width = window.innerWidth;
+        bgCanvas.height = window.innerHeight;
+        drawDottedLines();
+      };
+      
+      const drawDottedLines = () => {
+        bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
+        
+        // Set dot properties
+        const dotSize = 1;
+        const spacing = 10;
+        const diagonalOffset = 10;
+        
+        bgCtx.fillStyle = 'rgba(255, 255, 255, 0.15)';
+        
+        // Calculate how many diagonal lines we need
+        const numDiagonals = Math.ceil((bgCanvas.width + bgCanvas.height) / spacing);
+        
+        // Draw diagonal lines of dots
+        for (let d = -numDiagonals; d < numDiagonals; d++) {
+          const offset = d * spacing * diagonalOffset;
+          
+          for (let i = -bgCanvas.height; i < bgCanvas.width; i += spacing) {
+            const x = i;
+            const y = bgCanvas.height - (x + offset);
+            
+            if (x >= 0 && x <= bgCanvas.width && y >= 0 && y <= bgCanvas.height) {
+              bgCtx.beginPath();
+              bgCtx.arc(x, y, dotSize, 0, Math.PI * 2);
+              bgCtx.fill();
+            }
+          }
+        }
+      };
+      
+      updateBgSize();
+      
+      window.addEventListener('resize', updateBgSize);
+      return () => {
+        window.removeEventListener('resize', updateBgSize);
+      };
+    }
+  }, []);
+  
+  // Sound waveform animation
   useEffect(() => {
     const canvas = canvasRef.current;
     const content = contentRef.current;
@@ -61,11 +113,14 @@ export default function Hero() {
   
   return (
     <div className="relative min-h-screen w-full bg-gradient-to-br from-[#090932] to-[#24244b] flex flex-col items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8">
+      {/* Background dotted lines */}
+      <canvas ref={bgCanvasRef} className="absolute inset-0 w-full h-full pointer-events-none" />
+      
       {/* Content Container */}
       <div ref={contentRef} className="max-w-4xl w-full mx-auto text-center z-10">
         {/* Header */}
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
-          Discover the Future of Sound
+          Discover the Future of AI Voices
         </h1>
         
         {/* Paragraph */}
@@ -81,12 +136,10 @@ export default function Hero() {
         </div>
         
         {/* Call to Action Button */}
-        <button className="px-8 py-4 bg-white bg-opacity-10 hover:bg-opacity-20 text-white font-medium rounded-lg text-lg transition-all duration-300 border border-white border-opacity-20 hover:border-opacity-40 backdrop-blur-sm">
+        <button className="rounded-md bg-[#2721de] px-8 py-4 text-md font-medium text-white shadow-sm">
           Get Started
         </button>
       </div>
     </div>
   );
 }
-
-

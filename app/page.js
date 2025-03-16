@@ -1,5 +1,6 @@
 import AudioQuote from "./_components/AudioQuote";
 import ComparisonTable from "./_components/ComparisonTable";
+import Header from "./_components/Header";
 import Hero from "./_components/Hero";
 import LanguageSupport from "./_components/LanguageSupport";
 import TextCorrection from "./_components/TextCorrection";
@@ -9,6 +10,7 @@ import VoiceGenerator from "./_components/VoiceGenerator";
 export default function Home() {
   return (
     <>
+      <Header />
       <Hero />
       <div className="mt-[-40px] bg-gradient-to-b from-[#24244b] to-[#090932] overflow-hidden">
         <div className="flex items-center justify-center p-6">
