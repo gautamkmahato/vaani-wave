@@ -41,7 +41,7 @@ export default function Home() {
       <TextCorrection />
 
       <div className="mt-[-40px] bg-gradient-to-b from-[#090932] to-[#24244b]">
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center mt-12">
           <div className="w-full max-w-6xl p-6 rounded-2xl">
             {/* Responsive Two-Column Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
