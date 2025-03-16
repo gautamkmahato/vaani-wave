@@ -1,4 +1,5 @@
 import AudioQuote from "./_components/AudioQuote";
+import ComparisonTable from "./_components/ComparisonTable";
 import Hero from "./_components/Hero";
 import VoiceGenerator from "./_components/VoiceGenerator";
 
@@ -27,6 +28,7 @@ export default function Home() {
                   </div>
               </div>
             </div>
+      <ComparisonTable />
     </>
   );
 }
