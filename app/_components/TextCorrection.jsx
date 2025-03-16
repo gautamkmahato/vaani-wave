@@ -3,8 +3,8 @@ import { Save } from "lucide-react";
 export default function TextCorrection() {
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
-      <div className="max-w-[68rem] w-full bg-[#090932] shadow-lg rounded-xl px-6 sm:px-8 py-10 sm:py-12">
-        {/* Header Section */}
+      <div className="max-w-[68rem] w-full bg-[#17162d] shadow-lg rounded-xl px-6 sm:px-8 py-10 sm:py-12">
+        {/* Header Section */} 
         <div className="text-center mb-8">
           <h1 className="text-white text-2xl sm:text-3xl md:text-4xl font-serif mb-4 max-w-2xl mx-auto">
             Gain full control over how words are said

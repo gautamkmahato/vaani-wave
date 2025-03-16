@@ -47,7 +47,7 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {/* Left Column (Text Section) */}
               <div className="flex justify-center">
-                <div className="bg-cardBgPrimary rounded-lg shadow-lg flex items-center justify-center px-6 md:px-8 py-16 md:py-20 w-full">
+                <div className="bg-[#17162d] rounded-lg shadow-lg flex items-center justify-center px-6 md:px-8 py-16 md:py-20 w-full">
                   <div className="max-w-4xl w-full text-center">
                     <h1 className="text-white text-3xl md:text-4xl font-serif mb-4 max-w-2xl mx-auto">
                       AI Voice that aligns with your brand identity
@@ -56,7 +56,7 @@ export default function Home() {
                       Change the emotion of your stories by introducing the real-sounding voices with the pace, emotion, and pausing you want it to speak in.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                      <Link href="/" className="bg-buttonPrimary hover:bg-buttonSecondary text-white rounded-lg px-6 py-3 text-sm transition-colors shadow-lg text-center">
+                      <Link href="/" className="bg-[#423de3] hover:bg-[#3b37cc] text-white rounded-lg px-6 py-3 text-sm transition-colors shadow-lg text-center">
                         Generate for Free
                       </Link>
                       <Link href="/" className="bg-gray-700 hover:bg-gray-600 text-white rounded-lg px-6 py-3 text-sm transition-colors shadow-lg text-center">

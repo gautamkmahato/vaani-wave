@@ -49,7 +49,7 @@ const ttsPlatforms = [
 
 export default function ComparisonTable() {
   return (
-    <div className="text-white flex flex-col rounded-lg shadow-lg items-center p-6 mb-24 mt-12 w-full" style={{ backgroundColor: '#090932' }}>
+    <div className="text-white flex flex-col rounded-lg shadow-lg items-center p-6 mb-24 mt-12 w-full " style={{ backgroundColor: '#090932' }}>
       <h1 className="text-3xl md:text-4xl font-serif text-center mb-6">
         Compare Vaaniwave AI with Top TTS Platforms
       </h1>

@@ -43,7 +43,7 @@ export default function FeatureList() {
   ]
 
   return (
-    <div className="bg-cardBgPrimary rounded-lg shadow-lg flex items-center justify-center p-4">
+    <div className="bg-[#17162d] rounded-lg shadow-lg flex items-center justify-center p-4">
       <div className="max-w-md w-full space-y-2">
         {features.map((feature, index) => (
           <FeatureCard key={index} icon={feature.icon} title={feature.title} description={feature.description} />

@@ -23,7 +23,7 @@ const LanguageSupport = () => {
 
   return (
     <div className="w-full flex items-center justify-center px-4">
-      <div className="w-full max-w-[68rem] rounded-lg bg-[#090932] flex flex-col items-center text-center p-6 shadow-lg">
+      <div className="w-full max-w-[68rem] rounded-lg bg-[#17162d] flex flex-col items-center text-center p-6 shadow-lg">
         {/* Title and Description */}
         <div className="space-y-4 mb-6">
           <h2 className="text-3xl sm:text-4xl font-serif text-white">
