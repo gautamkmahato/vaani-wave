@@ -17,7 +17,7 @@ export default function Home() {
     <>
       <Header />
       <Hero />
-      <div className="mt-[-40px] bg-gradient-to-b from-[#24244b] to-[#090932] overflow-hidden">
+      <div className="mt-[-40px] py-12 bg-gradient-to-b from-[#24244b] to-[#090932] overflow-hidden">
         <div className="flex items-center justify-center">
           <div className="w-full max-w-6xl p-6 rounded-2xl mx-auto">
             {/* Responsive Grid */}
