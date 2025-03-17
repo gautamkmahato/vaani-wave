@@ -111,7 +111,7 @@ const TabSection = ({ getData }) => {
 
     return (
         <div className="min-h-screen text-gray-100 p-8">
-            <div className="max-w-3xl mx-auto">
+            <div className="max-w-3xl mt-8 mx-auto">
                 {/* Tabs */}
                 <div className="flex mb-4">
                     <button
@@ -129,7 +129,7 @@ const TabSection = ({ getData }) => {
                 </div>
 
                 {/* Content */}
-                <div className="bg-cardBgPrimary rounded-b-lg p-6">
+                <div className="bg-cardBgPrimary rounded-b-lg py-6 md:px-6">
                     {activeTab === "tts" && (
                         <form onSubmit={handleSubmit}>
                             <div className="space-y-4">
@@ -142,10 +142,10 @@ const TabSection = ({ getData }) => {
                                 />
 
                                 {/* Select Options */}
-                                <div className="flex items-center space-x-4">
+                                <div className="flex flex-col md:flex-row md:items-center md:space-x-4 space-y-4 md:space-y-0">
                                     {/* Main Select */}
                                     <select
-                                        className="bg-gray-700 text-gray-100 rounded-lg p-2 flex-grow"
+                                        className="bg-gray-700 text-gray-100 rounded-lg p-2 w-full"
                                         value={selectType}
                                         onChange={(e) => setSelectType(e.target.value)}
                                     >
@@ -153,101 +153,103 @@ const TabSection = ({ getData }) => {
                                         <option value="country">Country</option>
                                         <option value="language">Language</option>
                                         <option value="gender">Gender</option>
-
                                     </select>
 
                                     {/* Conditional Selects */}
                                     {selectType === "country" && (
-                                            <select
-                                                className="bg-gray-700 text-gray-100 rounded-lg p-2 flex-grow"
-                                                value={country}
-                                                onChange={(e) => handleSelectChange("country", e.target.value)}
-                                            >
-                                            <option value="">Select Country</option>
-                                            {countries.map((country, index) => (
-                                                <option key={index} value={country}>
-                                                    {country}
-                                                </option>
-                                            ))}
+                                        <select
+                                        className="bg-gray-700 text-gray-100 rounded-lg p-2 w-full"
+                                        value={country}
+                                        onChange={(e) => handleSelectChange("country", e.target.value)}
+                                        >
+                                        <option value="">Select Country</option>
+                                        {countries.map((country, index) => (
+                                            <option key={index} value={country}>
+                                            {country}
+                                            </option>
+                                        ))}
                                         </select>
-                                    
                                     )}
 
                                     {selectType === "language" && (
                                         <select
-                                            className="bg-gray-700 text-gray-100 rounded-lg p-2 flex-grow"
-                                            value={language}
-                                            onChange={(e) => handleSelectChange("language", e.target.value)}
+                                        className="bg-gray-700 text-gray-100 rounded-lg p-2 w-full"
+                                        value={language}
+                                        onChange={(e) => handleSelectChange("language", e.target.value)}
                                         >
-                                            <option value="">Select Language</option>
-                                            {languages.map((language, index) => (
-                                                <option key={index} value={language}>
-                                                    {language}
-                                                </option>
-                                            ))}
+                                        <option value="">Select Language</option>
+                                        {languages.map((language, index) => (
+                                            <option key={index} value={language}>
+                                            {language}
+                                            </option>
+                                        ))}
                                         </select>
                                     )}
+
                                     {selectType === "gender" && (
                                         <select
-                                            className="bg-gray-700 text-gray-100 rounded-lg p-2 flex-grow"
-                                            value={gender}
-                                            onChange={(e) => handleSelectChange("gender", e.target.value)}
+                                        className="bg-gray-700 text-gray-100 rounded-lg p-2 w-full"
+                                        value={gender}
+                                        onChange={(e) => handleSelectChange("gender", e.target.value)}
                                         >
-                                            <option value="">Select Gender</option>
-                                            <option value="Male">Male</option>
-                                            <option value="Female">Female</option>
+                                        <option value="">Select Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
                                         </select>
                                     )}
-                                    {voiceList && voiceList?.length > 0 && (
-                                        <select
-                                            className="bg-gray-700 text-gray-100 rounded-lg p-2 flex-grow"
-                                            value={voice}
-                                            onChange={(e) => setVoice(e.target.value)}
-                                        >
-                                            <option value="">Select Voice</option>
-                                            {voiceList?.map((voiceName, index) => (
-                                                <option key={index} value={voiceName}>
-                                                    {voiceName}
-                                                </option>
-                                            ))}
-                                        </select>
-                                    )}
-
-
-                                    {/* Submit Button with Loading */}
-                                    <button
-                                        type="submit"
-                                        className="bg-blue-600 text-white rounded-lg p-2 flex items-center justify-center w-32"
-                                        disabled={loading}
-                                    >
-                                        {loading ? (
-                                            <Loader2 className="animate-spin mr-2" size={18} />
-                                        ) : (
-                                            <Play className="mr-2" size={18} />
-                                        )}
-                                        {loading ? "Generating..." : "Generate"}
-                                    </button>
                                 </div>
+
+                                {/* Voice Selection (If Available) */}
+                                {voiceList && voiceList.length > 0 && (
+                                    <select
+                                        className="bg-gray-700 text-gray-100 rounded-lg p-2 w-full"
+                                        value={voice}
+                                        onChange={(e) => setVoice(e.target.value)}
+                                    >
+                                        <option value="">Select Voice</option>
+                                        {voiceList.map((voiceName, index) => (
+                                        <option key={index} value={voiceName}>
+                                            {voiceName}
+                                        </option>
+                                        ))}
+                                    </select>
+                                )}
+
+                                {/* Submit Button */}
+                                <button
+                                    type="submit"
+                                    className="bg-blue-600 text-white rounded-lg p-3 flex items-center justify-center w-full md:w-32"
+                                    disabled={loading}
+                                    >
+                                    {loading ? (
+                                        <Loader2 className="animate-spin mr-2" size={18} />
+                                    ) : (
+                                        <Play className="mr-2" size={18} />
+                                    )}
+                                    {loading ? "Generating..." : "Generate"}
+                                </button>
                             </div>
                         </form>
                     )}
 
                     {/* Audio Player */}
-                    <div className="mt-6">
+                    {audioUrl?.length > 0 && (
+                        <div className="mt-6">
                         <h3 className="text-lg font-semibold">Generated Audio:</h3>
-                        {audioUrl?.map((audio, index) => (
+                        {audioUrl.map((audio, index) => (
                             <audio key={index} controls className="w-full mt-2">
-                                <source src={audio} type="audio/mpeg" />
-                                Your browser does not support the audio element.
+                            <source src={audio} type="audio/mpeg" />
+                            Your browser does not support the audio element.
                             </audio>
                         ))}
-                    </div>
+                        </div>
+                    )}
 
                     {/* Voice Cloning Placeholder */}
                     {activeTab === "voiceCloning" && (
                         <div className="text-center py-8">
-                            <h2 className="text-2xl mb-4">Voice Cloning</h2>
-                            <p>Voice cloning feature coming soon!</p>
+                        <h2 className="text-2xl mb-4">Voice Cloning</h2>
+                        <p>Voice cloning feature coming soon!</p>
                         </div>
                     )}
                 </div>
