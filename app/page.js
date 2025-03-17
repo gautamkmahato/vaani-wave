@@ -15,7 +15,6 @@ import Footer from "./_components/Footer";
 export default function Home() {
   return (
     <>
-      <Header />
       <Hero />
       <div className="mt-[-40px] py-12 bg-gradient-to-b from-[#24244b] to-[#090932] overflow-hidden">
         <div className="flex items-center justify-center">

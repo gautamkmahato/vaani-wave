@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 import { Loader2, Play } from "lucide-react";
 import generateAudio from "../../action/generateAudio";
-import { voices } from "@/data/voiceData";
-import { countries } from "@/data/countries";
-import { languages } from "@/data/languages";
+import { voices } from "../../../data/voiceData";
+import { countries } from "../../..//data/countries";
+import { languages } from "../../..//data/languages";
 
 
 
