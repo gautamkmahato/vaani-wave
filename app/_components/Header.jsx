@@ -68,7 +68,7 @@ export default function Header() {
               <li key={item}>
                 <a
                   className="block text-gray-300 hover:text-white py-2 text-lg transition"
-                  href="/dashborad"
+                  href="/dashboard"
                   onClick={() => setIsOpen(false)}
                 >
                   {item}
