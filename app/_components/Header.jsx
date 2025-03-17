@@ -25,7 +25,7 @@ export default function Header() {
               <ul className="flex items-center gap-6 text-sm">
                 {["Home", "Playground", "Explore", "Pricing", "Documentation"].map((item) => (
                   <li key={item}>
-                    <a className="text-gray-200 transition hover:text-gray-200/75" href="#">
+                    <a className="text-gray-200 transition hover:text-gray-200/75" href="/dashboard">
                       {item}
                     </a>
                   </li>
