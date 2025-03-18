@@ -5,6 +5,15 @@ import { Menu, X } from "lucide-react"; // Icons
 import logo from "../../public/assets/logo-3.png";
 import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
 
+// Navigation Items
+const navItems = [
+  { label: "Home", href: "/dashboard" },
+  { label: "Playground", href: "/playground" },
+  { label: "Explore", href: "/explore" },
+  { label: "Pricing", href: "/payment" },
+  { label: "Documentation", href: "/docs" },
+];
+
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -25,10 +34,23 @@ export default function Header() {
 
             {/* Center: Logo */}
             <div className="flex-1 flex justify-center md:justify-start">
-              <a href="#">
+              <a href="/">
                 <Image src={logo} width={144} height={144} alt="logo" />
               </a>
             </div>
+
+            {/* Centered Navigation for Large Screens */}
+            <nav className="hidden md:flex gap-8 absolute left-1/2 transform -translate-x-1/2">
+              {navItems.map(({ label, href }) => (
+                <a
+                  key={label}
+                  href={href}
+                  className="text-gray-300 hover:text-white text-sm font-medium"
+                >
+                  {label}
+                </a>
+              ))}
+            </nav>
 
             {/* Right: User Authentication */}
             <div className="flex items-center gap-4">
@@ -70,11 +92,11 @@ export default function Header() {
           </button>
         </div>
 
-        {/* Sidebar Navigation Links */}
+        {/* Sidebar Navigation Links for Mobile */}
         <nav className="mt-4">
-          {["Home", "Playground", "Explore", "Pricing", "Documentation"].map((item) => (
-            <a key={item} className="block px-4 py-2 text-gray-300 hover:text-white text-lg" href="/dashboard">
-              {item}
+          {navItems.map(({ label, href }) => (
+            <a key={label} className="block px-4 py-2 text-gray-300 hover:text-white text-lg" href={href}>
+              {label}
             </a>
           ))}
         </nav>

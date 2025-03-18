@@ -58,23 +58,27 @@ const Card = ({ billingCycle, name, price }) => {
 export default function Pricing() {
   const [billingCycle, setBillingCycle] = useState("monthly");
   const [paymentStatus, setPaymentStatus] = useState(false);
+  const [isPaymentLoading, setIsPaymentLoading] = useState(true); // Added loading state
   const { isSignedIn, user, isLoaded } = useUser();
 
   useEffect(() => {
     async function getPaymentData() {
       if (isLoaded && isSignedIn) {
-        const paymentStatus = await checkPaymentStatus(user.id);
-        if (paymentStatus.status) {
-          console.log("Success");
-          setPaymentStatus(true);
+        try {
+          const paymentStatus = await checkPaymentStatus(user.id);
+          setPaymentStatus(paymentStatus.status);
+        } catch (error) {
+          console.error("Error checking payment status:", error);
+        } finally {
+          setIsPaymentLoading(false); // Stop loading after fetching
         }
       }
     }
     getPaymentData();
   }, [isLoaded, isSignedIn, user]);
 
-  // Show loading until Clerk is fully loaded
-  if (!isLoaded) {
+  // Show loading until Clerk or Payment Status is fully loaded
+  if (!isLoaded || isPaymentLoading) {
     return <h1 className="text-white">Loading...</h1>;
   }
 
@@ -113,4 +117,3 @@ export default function Pricing() {
     </div>
   );
 }
-
