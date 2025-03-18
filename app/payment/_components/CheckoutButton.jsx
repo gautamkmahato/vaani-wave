@@ -20,7 +20,7 @@ const CheckoutButton = ({ name, billingCycle }) => {
   if(!isSignedIn){
     return(
       <>
-        <h1>Sign in to view this page</h1>
+        <h1>Sign in to make Payment</h1>
       </>
     )
   }
