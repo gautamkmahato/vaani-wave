@@ -102,7 +102,6 @@ const TabSection = ({ getData }) => {
         setName(name[0]?.name || "");
     }
 
-
     useEffect(() => {
         filterVoices();
         getRealVoiceName();
