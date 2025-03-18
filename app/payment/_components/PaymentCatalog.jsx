@@ -18,7 +18,7 @@ const plans = {
   ],
 };
 
-const Card = ({ billingCycle, name, price }) => {
+const Card = ({ billingCycle, name, price, showButton }) => {
   const planDetails = {
     Free: [
       "Limited voices & styles",
@@ -50,7 +50,7 @@ const Card = ({ billingCycle, name, price }) => {
           <li key={index} className="text-sm">✅ {feature}</li>
         ))}
       </ul>
-      <CheckoutButton name={name} billingCycle={billingCycle} />
+      {showButton && <CheckoutButton name={name} billingCycle={billingCycle} />}
     </div>
   );
 };
@@ -58,7 +58,7 @@ const Card = ({ billingCycle, name, price }) => {
 export default function Pricing() {
   const [billingCycle, setBillingCycle] = useState("monthly");
   const [paymentStatus, setPaymentStatus] = useState(false);
-  const [isPaymentLoading, setIsPaymentLoading] = useState(true); // Added loading state
+  const [isPaymentLoading, setIsPaymentLoading] = useState(true);
   const { isSignedIn, user, isLoaded } = useUser();
 
   useEffect(() => {
@@ -70,8 +70,10 @@ export default function Pricing() {
         } catch (error) {
           console.error("Error checking payment status:", error);
         } finally {
-          setIsPaymentLoading(false); // Stop loading after fetching
+          setIsPaymentLoading(false);
         }
+      } else {
+        setIsPaymentLoading(false); // Stop loading if not signed in
       }
     }
     getPaymentData();
@@ -82,13 +84,8 @@ export default function Pricing() {
     return <h1 className="text-white">Loading...</h1>;
   }
 
-  // Check for sign-in status
-  if (!isSignedIn) {
-    return <h1 className="text-white">Please Sign in to view this page</h1>;
-  }
-
-  // Check payment status
-  if (paymentStatus) {
+  // Show only Payment Done if user has already paid
+  if (isSignedIn && paymentStatus) {
     return <h1 className="text-white">Payment Done</h1>;
   }
 
@@ -111,7 +108,13 @@ export default function Pricing() {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {plans[billingCycle].map((plan) => (
-          <Card key={plan.name} billingCycle={billingCycle} name={plan.name} price={plan.price} />
+          <Card
+            key={plan.name}
+            billingCycle={billingCycle}
+            name={plan.name}
+            price={plan.price}
+            showButton={isSignedIn}
+          />
         ))}
       </div>
     </div>
