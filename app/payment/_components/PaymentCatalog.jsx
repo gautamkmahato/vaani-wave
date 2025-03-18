@@ -18,7 +18,7 @@ const plans = {
   ],
 };
 
-const Card = ({ billingCycle, name, price, showButton }) => {
+const Card = ({ billingCycle, name, price }) => {
   const planDetails = {
     Free: [
       "Limited voices & styles",
@@ -50,7 +50,7 @@ const Card = ({ billingCycle, name, price, showButton }) => {
           <li key={index} className="text-sm">✅ {feature}</li>
         ))}
       </ul>
-      {showButton && <CheckoutButton name={name} billingCycle={billingCycle} />}
+      <CheckoutButton name={name} billingCycle={billingCycle} />
     </div>
   );
 };
@@ -113,7 +113,6 @@ export default function Pricing() {
             billingCycle={billingCycle}
             name={plan.name}
             price={plan.price}
-            showButton={isSignedIn}
           />
         ))}
       </div>
